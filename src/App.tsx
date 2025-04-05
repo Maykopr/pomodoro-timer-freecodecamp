@@ -111,5 +111,3 @@ function App() {
 }
 
 export default App;
-
-// TODO: se o length do outro modo muda, o tempo reestarta. Não deve ser assim.
