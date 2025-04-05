@@ -1,0 +1,204 @@
+@import url("https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&display=swap");
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	--primary: hsl(220, 55%, 28%);
+	--secondary: hsl(40, 80%, 58%);
+	--tertiary: hsl(40, 70%, 60%);
+
+	--primary-dark: hsl(from var(--primary) h s calc(l - 10));
+	--primary-light: hsl(from var(--primary) h s calc(l + 10));
+	--secondary-dark: hsl(from var(--secondary) h s calc(l - 10));
+	--secondary-light: hsl(from var(--secondary) h s calc(l + 10));
+	--tertiary-light: hsl(from var(--tertiary) h s calc(l + 20));
+	--tertiary-dark: hsl(from var(--tertiary) h s calc(l - 20));
+
+	--light: hsl(220, 40%, 96%);
+	--dark: hsl(220, 40%, 16%);
+
+	--color-font1: var(--light);
+	--color-font2: var(--secondary);
+
+	--danger: hsl(0, 70%, 50%);
+	--warning: hsl(50, 90%, 50%);
+	--success: hsl(130, 70%, 50%);
+}
+
+button {
+	cursor: pointer;
+}
+
+body {
+	font-family: "Oxanium", sans-serif;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+	background: linear-gradient(180deg, var(--light) 50%, var(--tertiary-light) 100%);
+}
+
+.app__container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 1em;
+	width: 280px;
+	aspect-ratio: 3/4;
+}
+
+.app {
+	border-radius: 0.9em;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 95%;
+	height: 96%;
+	box-shadow: 8px 8px 20px var(--secondary);
+	gap: 1.5em;
+	color: var(--color-font1);
+	font-size: 0.7rem;
+	background-color: var(--primary);
+	box-shadow: rgba(0, 0, 0, 0.2) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -60px 40px 0px inset,
+		rgba(0, 0, 0, 0.1) 0px 2px 1px, rgba(0, 0, 0, 0.2) 0px 32px 16px;
+	position: relative;
+}
+
+.pomodoro--light {
+	background-image: linear-gradient(
+		var(--rotate),
+		transparent -100%,
+		var(--primary) 45%,
+		var(--tertiary) 55%,
+		transparent 200%
+	);
+	animation: spin 10s linear infinite;
+}
+
+.pomodoro--warning {
+	background-image: linear-gradient(
+		var(--rotate),
+		transparent -100%,
+		var(--danger) 45%,
+		var(--warning) 55%,
+		transparent 200%
+	);
+	animation: spin 4s linear infinite;
+}
+
+.display {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	color: var(--color-font1);
+	font-weight: 300;
+	font-size: 1.2rem;
+}
+
+.display__timer {
+	font-size: 3em;
+	color: var(--secondary);
+}
+.display__timer--alert {
+	color: var(--danger);
+}
+
+.btn-container {
+	display: flex;
+	gap: 0.4em;
+}
+
+.timer-set-container {
+	display: flex;
+	width: 100%;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+.timer-set {
+	display: flex;
+}
+.timer-set__display {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.timer-set__timer {
+	line-height: 1.1;
+	font-size: 3rem;
+	color: var(--secondary);
+}
+.timer-set__btn-container {
+	display: flex;
+	flex-direction: column;
+	gap: 1.1em;
+	padding: 0.4em;
+}
+
+.pomodoro__btn {
+	border: none;
+	color: var(--primary);
+	background-color: transparent;
+	font-family: inherit;
+}
+
+.front {
+	position: relative;
+	padding: 0.3em 0.4em;
+	border-radius: 0.3em;
+	background: var(--tertiary);
+	font-weight: 600;
+	letter-spacing: 1.3px;
+	z-index: 1;
+}
+
+.front::before {
+	bottom: -3px;
+	left: 0px;
+	z-index: -1;
+	position: absolute;
+	content: "";
+	height: 100%;
+	width: 100%;
+	border-radius: 0.3em;
+	background: linear-gradient(
+		to right,
+		var(--tertiary-dark),
+		var(--tertiary-light) 9%,
+		var(--tertiary-dark) 90%,
+		var(--tertiary-light) 100%
+	);
+	box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.pomodoro__btn:is(:hover, :active) .front {
+	transition: all 0.2s ease-in-out;
+	filter: brightness(120%);
+	top: -1px;
+}
+
+.pomodoro__btn:is(:hover, :active) .front::before {
+	box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.3);
+	bottom: -4px;
+}
+
+@property --rotate {
+	syntax: "<angle>";
+	initial-value: 0deg;
+	inherits: false;
+}
+
+@keyframes spin {
+	0% {
+		--rotate: 0deg;
+	}
+	100% {
+		--rotate: 360deg;
+	}
+}
