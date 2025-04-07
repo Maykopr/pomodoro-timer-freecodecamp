@@ -6,12 +6,11 @@ App construído para um módulo do curso Front End Libraries do freeCodeCamp.
 
 ### Funcionalidades:
 
--   Tempo de sessão customisável.
--   Tempo de pausa customisável.
--   Responsivo.
--   Indicador visual quando o app está rodando.
--   Indicador sonoro quando o tempo termina.
+-   Tempo de sessão e pausa personalizável.
 -   Altera a sessão automaticamente.
+-   Indicador visual quando o app está rodando.
+-   Indicador visual quando o tempo está acabando.
+-   Indicador sonoro quando o tempo termina.
 
 ## Uso
 
